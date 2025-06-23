@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { StatusBadge } from '@/components/StatusBadge';
 import { EventEditModal } from '@/components/EventEditModal';
 import type { MonitorDetail, EventItem} from "../../../types";
+import {ExportEventsButton} from "@/components/ExportEventsButton";
 
 export default function MonitorDetailPage() {
     const { id } = useParams() as { id: string };
@@ -56,6 +57,10 @@ export default function MonitorDetailPage() {
             <div className="flex items-center gap-2 mb-4">
                 <span className="text-lg">Current Status:</span>
                 <StatusBadge status={monitor.isUp ? 'Functional' : 'Down'} />
+            </div>
+
+            <div className="flex items-center gap-2 mb-4">
+                <ExportEventsButton monitorId={monitor.id} monitorName={monitor.name} />
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
