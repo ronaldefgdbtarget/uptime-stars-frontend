@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
+import ReactQueryProvider from '@/providers/ReactQueryProvider';
+import Link from "next/link";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -27,7 +28,28 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+      <div className="min-h-screen bg-zinc-900 text-white p-6">
+          <div className="flex items-center justify-between mb-6">
+              <a href="/dashboard"><h1 className="text-2xl font-bold">Uptime Stars Team - Hackaton</h1></a>
+              <div className="flex items-center gap-4">
+                  <Link
+                      href="/monitors/new"
+                      className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded"
+                  >
+                      + Add Monitor
+                  </Link>
+                  <Link
+                      href="/status"
+                      className="text-sm underline hover:text-zinc-300"
+                  >
+                      Status Pages
+                  </Link>
+              </div>
+          </div>
+          <ReactQueryProvider>
+              {children}
+          </ReactQueryProvider>
+      </div>
       </body>
     </html>
   );
