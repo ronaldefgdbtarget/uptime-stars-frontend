@@ -28,6 +28,7 @@ export interface MonitorDto {
     createdAtUtc: string;
     isActive: boolean;
     lastEvents: MonitorEvent[];
+    lastImportantEvents: MonitorEvent[];
     uptime24hPercentage: string;
     uptime30dPercentage: string;
 }

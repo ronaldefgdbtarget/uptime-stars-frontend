@@ -69,4 +69,5 @@ export interface MonitorDetail {
     uptime24hPercentage: string;
     uptime30dPercentage: string;
     lastEvents: EventItem[];
+    lastImportantEvents: EventItem[];
 }
