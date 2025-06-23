@@ -70,6 +70,5 @@ export async function createMonitor(payload: CreateMonitorPayload): Promise<stri
         throw new Error(`Error to create monitor: ${res.statusText}`);
     }
 
-    const data = await res.json();
-    return data.id; // ← UUID de respuesta
+    return await res.json();
 }

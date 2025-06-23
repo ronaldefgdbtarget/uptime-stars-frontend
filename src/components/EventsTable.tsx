@@ -7,16 +7,14 @@ import { StatusBadge } from './StatusBadge';
 interface EventItem {
     id?: string;
     name: string;
+    monitorId: string;
     status: 'Functional' | 'Down' | 'Maintenance' | 'Unknown' | 'Paused';
     timestamp: string;
     message: string;
 }
 
-interface EventsTableProps {
-    selectedMonitorId: string | null;
-}
-
-export default function EventsTable({ selectedMonitorId }: EventsTableProps) {
+export default function EventsTable() {
+    const [selectedMonitorId, setSelectedMonitorId] = useState<string | null>(null);
     const { data, isLoading, isError } = useMonitors(1, 100, 10);
 
     if (isLoading) return <p>Loading recent events...</p>;
@@ -43,6 +41,14 @@ export default function EventsTable({ selectedMonitorId }: EventsTableProps) {
         <div className="bg-zinc-800 rounded-md p-4 shadow">
             <div className="flex justify-between items-center mb-4">
                 <h2 className="text-lg font-semibold">Recent Events</h2>
+                {selectedMonitorId && (
+                    <button
+                        onClick={() => setSelectedMonitorId(null)}
+                        className="text-sm underline text-zinc-300 hover:text-white"
+                    >
+                        Clear Filter
+                    </button>
+                )}
             </div>
             <div className="overflow-auto max-h-[600px]">
                 <table className="min-w-full text-sm text-left">
@@ -59,6 +65,7 @@ export default function EventsTable({ selectedMonitorId }: EventsTableProps) {
                         <tr
                             key={event.id}
                             className="border-b border-zinc-700 hover:bg-zinc-700/30 cursor-pointer"
+                            onClick={() => setSelectedMonitorId(event.monitorId)}
                         >
                             <td className="p-2 font-medium">{event.name}</td>
                             <td className="p-2">

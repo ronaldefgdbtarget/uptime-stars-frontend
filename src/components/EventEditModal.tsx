@@ -13,7 +13,6 @@ export const EventEditModal = ({ isOpen, onClose, onSave, defaultValues }: Props
         falsePositive: defaultValues?.falsePositive || false,
         category: defaultValues?.category || '',
         note: defaultValues?.note || '',
-        ticketCode: defaultValues?.ticketCode || '',
         maintenanceType: defaultValues?.maintenanceType || '',
     });
 
@@ -33,8 +32,8 @@ export const EventEditModal = ({ isOpen, onClose, onSave, defaultValues }: Props
     return (
         <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
             <div className="bg-white p-6 rounded shadow-lg w-full max-w-lg">
-                <h2 className="text-lg font-bold mb-4">Edit event</h2>
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <h2 className="text-lg font-bold mb-4 text-gray-500">Edit event</h2>
+                <form onSubmit={handleSubmit} className="space-y-4 text-gray-500">
                     <label className="block">
                         <input
                             type="checkbox"
@@ -50,8 +49,8 @@ export const EventEditModal = ({ isOpen, onClose, onSave, defaultValues }: Props
                         <label className="block">Category</label>
                         <select name="category" value={form.category} onChange={handleChange} className="w-full border rounded p-2">
                             <option value="">-- Select --</option>
-                            <option value="INTERNAL">Internal</option>
-                            <option value="EXTERNAL">External</option>
+                            <option value="0">Internal</option>
+                            <option value="1">External</option>
                         </select>
                     </div>
 
@@ -65,16 +64,16 @@ export const EventEditModal = ({ isOpen, onClose, onSave, defaultValues }: Props
                         />
                     </div>
 
-                    <div>
-                        <label className="block">Ticket code</label>
-                        <input
-                            type="text"
-                            name="ticketCode"
-                            value={form.ticketCode}
-                            onChange={handleChange}
-                            className="w-full border rounded p-2"
-                        />
-                    </div>
+                    {/*<div>*/}
+                    {/*    <label className="block">Ticket code</label>*/}
+                    {/*    <input*/}
+                    {/*        type="text"*/}
+                    {/*        name="ticketCode"*/}
+                    {/*        value={form.ticketCode}*/}
+                    {/*        onChange={handleChange}*/}
+                    {/*        className="w-full border rounded p-2"*/}
+                    {/*    />*/}
+                    {/*</div>*/}
 
                     <div>
                         <label className="block">Maintenance type</label>
@@ -85,8 +84,8 @@ export const EventEditModal = ({ isOpen, onClose, onSave, defaultValues }: Props
                             className="w-full border rounded p-2"
                         >
                             <option value="">-- Select --</option>
-                            <option value="PLANNED">Planned</option>
-                            <option value="EMERGENCY">Emergency</option>
+                            <option value="0">Planned</option>
+                            <option value="1">Emergency</option>
                         </select>
                     </div>
 

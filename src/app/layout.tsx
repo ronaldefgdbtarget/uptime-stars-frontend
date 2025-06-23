@@ -39,7 +39,7 @@ export default function RootLayout({
                       + Add Monitor
                   </Link>
                   <Link
-                      href="/status"
+                      href="/dashboard"
                       className="text-sm underline hover:text-zinc-300"
                   >
                       Status Pages

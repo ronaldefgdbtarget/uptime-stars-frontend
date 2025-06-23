@@ -8,12 +8,12 @@ export const MonitorForm = () => {
     const router = useRouter();
 
     const [form, setForm] = useState({
-        type: 'HTTPS',            // HTTPS | PING
+        type: 'HTTPS',
         name: '',
         target: '',
-        intervalInMinutes: 1,     // minutos
+        intervalInMinutes: 1,
         tiemoutInMilliseconds: 1000,
-        alertEmails: '',          // cadena separada por comas
+        alertEmails: '',
         description: '',
     });
 
@@ -55,7 +55,6 @@ export const MonitorForm = () => {
             onSubmit={handleSubmit}
             className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 max-w-3xl mx-auto"
         >
-            {/* Tipo */}
             <div>
                 <label className="block mb-1">Monitor type</label>
                 <select
@@ -69,7 +68,6 @@ export const MonitorForm = () => {
                 </select>
             </div>
 
-            {/* Nombre */}
             <div>
                 <label className="block mb-1">Simple name</label>
                 <input
@@ -82,7 +80,6 @@ export const MonitorForm = () => {
                 />
             </div>
 
-            {/* URL / Target */}
             <div className="md:col-span-2">
                 <label className="block mb-1">Target URL / IP</label>
                 <input
@@ -95,7 +92,6 @@ export const MonitorForm = () => {
                 />
             </div>
 
-            {/* Intervalo */}
             <div>
                 <label className="block mb-1">Interval (minutes)</label>
                 <input
@@ -108,7 +104,6 @@ export const MonitorForm = () => {
                 />
             </div>
 
-            {/* Timeout */}
             <div>
                 <label className="block mb-1">Timeout (milliseconds)</label>
                 <input
@@ -121,7 +116,6 @@ export const MonitorForm = () => {
                 />
             </div>
 
-            {/* Emails */}
             <div className="md:col-span-2">
                 <label className="block mb-1">Alert emails (comma-separated)</label>
                 <input
@@ -134,7 +128,6 @@ export const MonitorForm = () => {
                 />
             </div>
 
-            {/* Descripción */}
             <div className="md:col-span-2">
                 <label className="block mb-1">Description</label>
                 <textarea
@@ -146,7 +139,6 @@ export const MonitorForm = () => {
                 />
             </div>
 
-            {/* Botón */}
             <div className="md:col-span-2">
                 <button
                     type="submit"

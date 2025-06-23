@@ -22,7 +22,6 @@ export default function DashboardPage() {
     const [page, setPage] = useState(1);
     const { data, isLoading, isError } = useMonitors(page, 100);
     const { stats, isLoading: statsLoading, isError: statsError } = useMonitorStats();
-    const [selectedMonitorId, setSelectedMonitorId] = useState<string | null>(null);
 
     return (
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
@@ -33,9 +32,7 @@ export default function DashboardPage() {
                     <p className="text-red-400">Error loading monitors.</p>
                 ) : (
                     data?.data.map(monitor => (
-                        <div key={monitor.id} onClick={() => setSelectedMonitorId(monitor.id)} className="cursor-pointer">
-                            <MonitorCard monitor={monitor} />
-                        </div>
+                        <MonitorCard key={monitor.id} monitor={monitor} />
                     ))
                 )}
             </div>
@@ -46,7 +43,7 @@ export default function DashboardPage() {
                 ) : (
                     <StatsBar stats={statsLoading ? defaultStats : stats} />
                 )}
-                <EventsTable selectedMonitorId={selectedMonitorId} />
+                <EventsTable />
             </div>
         </div>
     );

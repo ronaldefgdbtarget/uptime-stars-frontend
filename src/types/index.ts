@@ -45,3 +45,28 @@ export interface UptimeEvent {
     ticketCode?: string;
     maintenanceType?: 'PLANNED' | 'EMERGENCY';
 }
+
+export interface EventItem {
+    id: string;
+    timestampUtc: string;
+    isUp: boolean;
+    message: string;
+    latencyMilliseconds: number;
+    falsePositive: boolean;
+    category: string;
+    note: string;
+    ticketId: string;
+    maintenanceType: string;
+}
+
+export interface MonitorDetail {
+    id: string;
+    name: string;
+    description: string;
+    target: string;
+    isUp: boolean;
+    intervalInMinutes: number;
+    uptime24hPercentage: string;
+    uptime30dPercentage: string;
+    lastEvents: EventItem[];
+}
