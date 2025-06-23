@@ -7,7 +7,6 @@ import { useMonitorStats } from '@/hooks/useMonitorsStats';
 import MonitorCard from '@/components/MonitorCard';
 import { StatsBar } from '@/components/StatsBar';
 import EventsTable from '@/components/EventsTable';
-import Link from 'next/link';
 
 const defaultStats = {
     Functional: 0,
